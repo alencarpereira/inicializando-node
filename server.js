@@ -27,4 +27,31 @@ app.post('/usuario', async (req, res) => {
     res.status(201).json(user)
 })
 
+app.put('/usuario/:id', async (req, res) => {
+
+
+    const user = await prisma.user.update({
+        where: {
+            id: req.params.id,
+        },
+        data: {
+            email: req.body.email,
+            age: req.body.age,
+            name: req.body.name
+        }
+    })
+
+    res.status(200).json(user)
+})
+
+app.delete('/usuario/:id', async (req, res) => {
+    await prisma.user.delete({
+        where: {
+            id: req.params.id,
+        },
+    })
+
+    res.status(200).json({ message: "Usuário deletado com sucesso!" })
+})
+
 app.listen(3000)
