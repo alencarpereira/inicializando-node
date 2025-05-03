@@ -51,7 +51,7 @@ app.delete('/usuario/:id', async (req, res) => {
         },
     })
 
-    res.status(201).json({ message: "Usuário deletado com sucesso!" })
+    res.status(200).json({ message: "Usuário deletado com sucesso!" })
 })
 
 app.listen(3000)
